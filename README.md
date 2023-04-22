@@ -1,6 +1,6 @@
 # Consuming API with flask #
 
-[] Set up a Flask application
+[ ] Set up a Flask application
 
 [] Install the "requests" library
 
