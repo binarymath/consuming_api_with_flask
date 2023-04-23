@@ -1,34 +1,37 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, render_template
 from dotenv import load_dotenv
 import requests
 import os
 
 load_dotenv()
 
-type_figure = "computer"
-size = "1024x1024"
-
 app = Flask(__name__)
-url = "https://openai80.p.rapidapi.com/images/generations"
-
-payload = {
-    "prompt": type_figure,
-    "n": 1,
-    "size": size
-}
-
-headers = {
-    "content-type": "application/json",
-    "X-RapidAPI-Key": os.environ['X-RapidAPI-Key'],
-    "X-RapidAPI-Host": os.environ['X-RapidAPI-Host']
-}
 
 
 @app.route('/')
-def index():
-    # Make API request to RapidAPI
-    response = requests.request("POST", url, json=payload, headers=headers)
-    data = response.json()  # assuming the response is in JSON format
+def formpage():
+    return render_template('index.html')
+
+
+@app.route('/image', methods=['POST'])
+def processform():
+    type_figure = request.form['type_figure']
+
+    url = "https://openai80.p.rapidapi.com/chat/completions"
+
+    payload = {"prompt": type_figure,
+               "n": 1,
+               "size": "1024x1024"}
+
+    headers = {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": os.environ['X-RapidAPI-Key'],
+        "X-RapidAPI-Host": os.environ['X-RapidAPI-Host']
+    }
+    response = requests.post(url, json=payload, headers=headers)
+
+    data = response.json()
+
     return render_template('index.html', data=data)
 
 

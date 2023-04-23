@@ -1,20 +1,17 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Consuming API</title>
+    <title>Image</title>
 </head>
 <body>
-    <h1>Consuming API in RapidAPI</h1>
-    <p>Data from RapidAPI </p>
-
-    <form action="/submit" method="post">
-        <input type="text" name="type_figure">
-        <input type="submit" value="Submit">
+    <h1>Formulation</h1>
+    <form action="image" method="post">
+        <label for="type_figure">Faça uma descrição clara da sua figura:</label>
+        <input type="text" id="type_figure" name="type_figure"><br>
+        <input type="submit" value="Enviar">
     </form>
-
-    <img src="{{data['data'][0]['url']}}" alt="Imagem descrita">
-
+    <div>
+  <h2>Resposta:</h2>
+  <p>{{data}}</p>
+</div>
 </body>
-</html>
