@@ -1,13 +1,13 @@
 # Consuming API with flask #
 
-- [ ] Set up a Flask application
+- [x] Set up a Flask application
 
-- [ ] Install the "requests" library
+- [x] Install the "requests" library
 
-- [ ] Import the "requests" library
+- [x] Import the "requests" library
 
-- [ ] Make HTTP requests to RapidAPI
+- [x] Make HTTP requests to RapidAPI
 
-- [ ] Handle API response
+- [x] Handle API response
 
-- [ ] Test and debug
+- [x] Test and debug
