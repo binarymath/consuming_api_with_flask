@@ -8,6 +8,13 @@
 <body>
     <h1>Consuming API in RapidAPI</h1>
     <p>Data from RapidAPI </p>
-    <p><a href="{{data['data'][0]['url']}}"> Link para imagem </a> </p>
+
+    <form action="/submit" method="post">
+        <input type="text" name="type_figure">
+        <input type="submit" value="Submit">
+    </form>
+
+    <img src="{{data['data'][0]['url']}}" alt="Imagem descrita">
+
 </body>
 </html>

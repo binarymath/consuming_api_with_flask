@@ -1,17 +1,20 @@
-from flask import Flask, render_template
-import requests
+from flask import Flask, render_template, request
 from dotenv import load_dotenv
+import requests
 import os
 
 load_dotenv()
+
+type_figure = "computer"
+size = "1024x1024"
 
 app = Flask(__name__)
 url = "https://openai80.p.rapidapi.com/images/generations"
 
 payload = {
-    "prompt": "desenho de super-heroi",
+    "prompt": type_figure,
     "n": 1,
-    "size": "1024x1024"
+    "size": size
 }
 
 headers = {
@@ -28,10 +31,6 @@ def index():
     data = response.json()  # assuming the response is in JSON format
     return render_template('index.html', data=data)
 
-
-response1 = requests.request("POST", url, json=payload, headers=headers)
-
-print(response1.text)
 
 if __name__ == '__main__':
     app.run()
